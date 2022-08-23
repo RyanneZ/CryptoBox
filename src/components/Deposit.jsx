@@ -96,6 +96,7 @@ class Deposit extends Component {
         <Tabs defaultActiveKey="1" centered>
           <TabPane tab="Add Cash" key="1">
             <form className='trade-form'>
+            <span style={{fontSize:"2rem",color: 'rgba(0, 0, 0, 0.45)'}} >$ &nbsp;</span> 
               <InputNumber  name='amount'type="number" min={0} value={this.state.amount} onChange={this.handleChange} size='large'/>
               <br />
               <br />
@@ -112,6 +113,7 @@ class Deposit extends Component {
           </TabPane>
           <TabPane tab="Cashout" key="2">
             <form className='trade-form'>
+            <span style={{fontSize:"2rem",color: 'rgba(0, 0, 0, 0.45)'}} >$ &nbsp;</span> 
             <InputNumber  name='amount'type="number" min={0} value={this.state.amount} onChange={this.handleChange} size='large'/>
               {this.state.alert}
                 <br />

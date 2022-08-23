@@ -1,6 +1,6 @@
 import React from 'react'
 import millify from 'millify'
-import { Typography, Row, Col, Statistic,Spin } from 'antd'
+import { Typography, Row, Col, Statistic,Spin , Table} from 'antd'
 import { useGetCryptosQuery } from '../services/cryptoApi'
 import { Link } from 'react-router-dom';
 import getPlacements from 'antd/es/_util/placements'
@@ -17,24 +17,45 @@ const Homepage = () => {
   const globalStats = data?.data?.stats;
   if(isFetching) return <Spin />
   let simplified = false
+
+  const columns = [
+    {
+      title: '',
+      dataIndex: 'icon',
+    },
+    {
+      title: 'Name',
+      dataIndex: 'name',
+    },
+    {
+      title: 'Balance',
+      dataIndex: 'balance',
+    },
+    {
+      title: 'Price',
+      dataIndex: 'Price',
+    },
+    {
+      title: 'Allocation',
+      dataIndex: 'allocation',
+    },
+  
+  ];
+  
+  const datas = []
   return (
     <div>
-      <Title level={2} className='heading'>Global Crypto Stats</Title>
-      <Row gutter={[32, 32]}>
-        <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats.total} /></Col>
-        <Col span={12}><Statistic title="Total Deposit" value={millify(globalStats.totalDeposit)} /></Col>
-        <Col span={12}><Statistic title="Total Market Cap:" value={millify(globalStats.totalMarketCap)} /></Col>
-        <Col span={12}><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)} /></Col>
-        <Col span={12}><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)} /></Col>
-      </Row>
+      <Statistic title="Your Balance(USD):" value={0}/>
+      <Statistic title="Your Assets:" value={0}/>
+      <Table columns={columns} dataSource={datas}  />
       <div className="home-heading-container">
-        <Title level={2} className='home-title'>Top 10 Cryptocurrencies in the world</Title>
-        <Title level={3} className='show-more'><Link to='/cryptocurrencies'>Show more</Link></Title>
+        <Title level={4} className='home-title'>Watch list</Title>
+        <p className='show-more'><Link to='/cryptocurrencies'>View more</Link></p>
       </div>
       <Cryptocurrencies simplified />
       <div className="home-heading-container">
         <Title level={2} className='home-title'>Latest Crypto News</Title>
-        <Title level={3} className='show-more'><Link to='/news'>Show more</Link></Title>
+        <h4 level={3} className='show-more'><Link to='/news'>View more</Link></h4>
       </div>
       <News simplified />
     </div>
