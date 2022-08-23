@@ -69,7 +69,7 @@ const Trade = (props) => {
   if (coinList === undefined){
     return <Spin />
   }
-
+  console.log(coinList)
 
 
   const handleBuy = async (e) => {
@@ -113,6 +113,7 @@ const Trade = (props) => {
   }
 
   return (
+      
     <Tabs defaultActiveKey="1" centered>
     <TabPane tab="Buy" key="1" className='tabpane'>
     
@@ -134,7 +135,8 @@ const Trade = (props) => {
         
         </Select>
         <br />
-        Price: {Number(price).toLocaleString('en', numberOptions)}
+      
+        Price:<span style={{color:'#1890ff'}}>{`  ${Number(price).toLocaleString('en', numberOptions)}`}</span>
         <br/><br/>
         With &nbsp;<img src='https://cdn.coinranking.com/kz6a7w6vF/usd.svg' style={{width: '1rem', height: '1rem'}} />&nbsp; &nbsp;USD wallet
         <br />

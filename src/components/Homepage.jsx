@@ -43,8 +43,10 @@ const Homepage = () => {
   ];
   
   const datas = []
+  
   return (
     <div>
+
       <Statistic title="Your Balance(USD):" value={0}/>
       <Statistic title="Your Assets:" value={0}/>
       <Table columns={columns} dataSource={datas}  />

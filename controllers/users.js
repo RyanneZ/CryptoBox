@@ -101,4 +101,3 @@ async function getBalances(email) {
   return balances
 }
 
-getBalances("polly@gmail.com")
