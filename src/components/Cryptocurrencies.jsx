@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import millify from 'millify';
 import { Link } from 'react-router-dom';
-import { Card, Row, Col, Input,Avatar, List ,Table, Space, Typography,Spin} from 'antd';
+import { Table, Space, Typography,Spin} from 'antd';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
 const { Text } = Typography;
 
 
-const data = [
-  {
-    title: 'Ant Design Title 1',
-  },
-
-];  
+ 
 
 const Cryptocurrencies = ({simplified}) => {
   const count = simplified? 10 : 50
