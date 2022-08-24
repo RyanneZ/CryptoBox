@@ -30,9 +30,9 @@ const News = ({ simplified }) => {
                 <div className="provider-container">
                   <div>
                     <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="" />
-                    <Text className="provider-name">{news.provider[0]?.name}</Text>
+                    <Text style={{color: 'rgba(0, 0, 0, 0.45)'}} className="provider-name">{news.provider[0]?.name}</Text>
                   </div>
-                  <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                  <Text style={{color: 'rgba(0, 0, 0, 0.45)'}}>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
                 </div>
               </a>
 

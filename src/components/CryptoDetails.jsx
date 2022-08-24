@@ -17,16 +17,6 @@ const CryptoDetails = () => {
 
   const cryptoDetails = data?.data?.coin;
 
-  
-
-
-  const stats = [
-    { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`},
-    { title: 'Rank', value: cryptoDetails?.rank },
-    { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}` },
-    { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`},
-    { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}` },
-  ];
 
 
   const columns = [

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import millify from 'millify';
 import { Link } from 'react-router-dom';
-import { Table, Space, Typography,Spin} from 'antd';
+import { Table, Space, Typography,Spin, Input} from 'antd';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
 const { Text } = Typography;
@@ -79,80 +79,13 @@ cryptos?.forEach( c => {
     <div>
       {!simplified && (
         <div className='search-crypto'>
-          <input placeholder='Search Cryptocurrency' onChange={(e) => setSearchTerm(e.target.value)} />
+          <Input placeholder='Search Cryptocurrency' onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
       )}
      
-      {/* <Row gutter={[32, 32]} className='crypto-card-container'> 
-        {cryptos?.map( (currency) => (
-          
-          <Col xs={4} sm={2} lg={1} className='crypto-card' key={currency.uuid}>
-            <Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
-              <Card title={currency.name}
-                    extra={<img className='crypto-image' src={currency.iconUrl}/>}
-                    hoverable>
-                <p>Price: {millify(currency.price)}</p>
-                <p>Market Cap: {millify(currency.marketCap)}</p>
-                <p>Daily Change: {millify(currency.change)}</p>
-
-              </Card>
-              <Card title={<img className='crypto-image' src={currency.iconUrl}/>}
-                    extra={`${currency.name}  ${currency.symbol}`}
-                    hoverable>
-                <p>Price: {millify(currency.price)}</p>
-                <p>Market Cap: {millify(currency.marketCap)}</p>
-                <p>Daily Change: {millify(currency.change)}</p>
-              </Card>
-              <List
-                itemLayout="horizontal"
-                dataSource={data}
-                renderItem={(item) => (
-                  <List.Item>
-                    <List.Item.Meta
-                      avatar={<Avatar src={currency.iconUrl} />}
-                      title={<a href="">{currency.name}</a>}
-                      hoverable
-                    />
-                      <p>Price: {millify(currency.price)}</p>
-                      <p>Market Cap: {millify(currency.marketCap)}</p>
-                      <p>Daily Change: {millify(currency.change)}</p>
-                  </List.Item>
-                )}
-              />
-            </Link>
-          </Col>
-          
-        ) )}
-      </Row> */}
-      <Table columns={columns} dataSource={datas}  />
-      {/* {cryptos?.map( (currency) => (
-        <List
-          itemLayout="horizontal"
-          dataSource={data}
-          renderItem={(item) => (
-            <List.Item>
-              <List.Item.Meta
-                avatar={<Avatar src={currency.iconUrl} />}
-                title={<a href="">{currency.name}</a>}
-                hoverable
-              />
-                <p>Symbol: {(currency.symbol)}</p>
-                <p>Price: {millify(currency.price)}</p>
-                <br />
-                <p>Market Cap: {millify(currency.marketCap)}</p>
-                <p>Daily Change: {millify(currency.change)}</p>
-            </List.Item>
-          )}
-        />
-              
-      ) )} */}
-
-
-       
      
+      <Table columns={columns} dataSource={datas}  />
 
-    
-            
     </div>
   )
 }
