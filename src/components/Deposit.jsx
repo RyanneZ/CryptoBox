@@ -38,6 +38,7 @@ class Deposit extends Component {
   handleChange = (value) => {
     this.setState({
       amount: value,
+      alert: ''
      
     });
   };

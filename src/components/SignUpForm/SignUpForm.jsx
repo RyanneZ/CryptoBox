@@ -5,6 +5,7 @@ import React from 'react';
 import './SignUpForm.css';
 
 
+
 export default class SignUpForm extends Component {
   state = {
     name: '',
@@ -50,8 +51,6 @@ export default class SignUpForm extends Component {
     const disable = this.state.password !== this.state.confirm;
     return (
       <div >
-
-
 
         <Form autoComplete="off"
           name="normal_login"

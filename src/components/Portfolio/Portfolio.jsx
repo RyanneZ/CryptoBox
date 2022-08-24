@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import millify from 'millify';
 import { Pie } from '@ant-design/plots';
 import { Statistic,Spin ,Table} from 'antd'
 import { useGetCryptosQuery } from '../../services/cryptoApi';
@@ -14,20 +15,23 @@ const Portfolio = (props) => {
   let usdTotal = 0
 
   for (const key in props.balances) {
-    if(key === 'currency') {
-      usdBalances[key] = props.balances[key]
-      usdTotal += usdBalances[key]
-
-    }else {
-      let filteredCoin = coinList.filter(c=>c.name==key)
-      usdBalances[key] = filteredCoin[0].price * props.balances[key]
-      usdTotal += usdBalances[key]
+    if( props.balances[key] != 0) {
+      if(key === 'currency') {
+        usdBalances['Cash'] = props.balances[key]
+        usdTotal += usdBalances['Cash']
+  
+      }else {
+        let filteredCoin = coinList.filter(c=>c.name==key)
+        usdBalances[key] = filteredCoin[0].price * props.balances[key]
+        usdTotal += usdBalances[key]
+      }
     }
+
   }
-  console.log(usdTotal)
-  for (const key in props.balances) {
+ 
+  for (const key in usdBalances) {
     data.push({
-      type: key,value: (usdBalances[key]/usdTotal)
+      type: key,value: usdBalances[key] 
     })
   }
 
@@ -68,20 +72,35 @@ const Portfolio = (props) => {
       dataIndex: 'name',
     },
     {
-      title: 'Balance',
+      title: 'Balance(USD)',
       dataIndex: 'balance',
     },
     {
-      title: 'Price',
-      dataIndex: 'Price',
+      title: 'Price(USD)',
+      dataIndex: 'price',
     },
     {
-      title: 'Allocation',
+      title: 'Allocation(%)',
       dataIndex: 'allocation',
     },
   
   ];
   const datas = []
+  for (const key in props.balances) {
+    if(key != 'currency' && props.balances[key] != 0) {
+      let filteredCoin = coinList.filter(c=>c.name==key)
+      datas.push({
+        key: filteredCoin[0].uuid,
+        icon: <><img src={filteredCoin[0].iconUrl} style={{width:"2rem",height:"2rem"}} /></>,
+        name: key,
+        balance: Number(usdBalances[key]).toLocaleString('en', numberOptions),
+        price: Number(filteredCoin[0].price).toLocaleString('en', numberOptions),
+        allocation: Number((usdBalances[key]/usdTotal * 100)).toLocaleString('en', numberOptions),
+  
+      })
+    }
+ 
+  }
 
   useEffect(async (props) => {
     setCoinList(cryptoList?.data?.coins);
@@ -93,9 +112,10 @@ const Portfolio = (props) => {
        
       </div>
       <Pie {...config} />
+      <br /><br />
       <Statistic title="Your Total Balance(USD):" value={Number(usdTotal).toLocaleString('en', numberOptions)}/>
       <br />
-      <Statistic title="Your Assets(USD):" value={Number(usdTotal-(props.balances.currency)).toLocaleString('en', numberOptions)}/>
+      <Statistic title="Your Crypto Assets(USD):" value={Number(usdTotal-(props.balances.currency)).toLocaleString('en', numberOptions)}/>
       <br />
       <Table columns={columns} dataSource={datas}  />
     </div>

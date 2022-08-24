@@ -16,6 +16,7 @@ const Homepage = (props) => {
 
   const { data, isFetching } = useGetCryptosQuery(10)
   
+  
 
   
   useEffect(async () => {
@@ -39,8 +40,8 @@ const Homepage = (props) => {
       console.error("Error:", err) // <-- log if error 
     }
   },[])
+  
   if(isFetching) return <Spin />
-
   return (
     <div>
       
@@ -48,12 +49,6 @@ const Homepage = (props) => {
      
       <Portfolio balances={balances}/>
      
-     
-      {/* <div className="home-heading-container">
-        <Title level={4} className='home-title'>Watch list</Title>
-        <p className='show-more'><Link to='/cryptocurrencies'>View more</Link></p>
-      </div> */}
-      {/* <Cryptocurrencies simplified /> */}
       <div className="home-heading-container">
         <Title level={4} className='home-title'>News</Title>
         <h4 level={3} className='show-more'><Link to='/news'>View more</Link></h4>

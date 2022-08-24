@@ -60,6 +60,12 @@ const Trade = (props) => {
     setSelectedCoin(value)
     let filteredCoin = coinList.filter(c=>c.name==value)
     setPrice(filteredCoin[0].price)
+    
+  }
+
+  const handleInputChange = (value) => {
+    setAmount(value)
+    setAlert('')
   }
 
   //Default Value for Price
@@ -95,6 +101,10 @@ const Trade = (props) => {
   }
   const handleSell = async (e) => {
     e.preventDefault();
+    if (amount > balances[selectedCoin]* price) {
+      setAlert( <Alert message="Your balance is not enough!" type="error" showIcon />)  
+       return
+    }
     try {
       let fetchResponse = await fetch("/api/users/buy", {
         method: "POST",
@@ -120,7 +130,7 @@ const Trade = (props) => {
     <div className='trade'>
       <form className='trade-form'>
       <span style={{fontSize:"2rem",color: 'rgba(0, 0, 0, 0.45)'}} >$ &nbsp;</span> 
-       <InputNumber  name='amount'type="number" min={0} value={amount} onChange={(value) => setAmount(value)} size='large'/>
+       <InputNumber  name='amount'type="number" min={0} value={amount} onChange={handleInputChange} size='large'/>
         {alert}
       
         <br />
@@ -159,7 +169,8 @@ const Trade = (props) => {
         
     <form className='trade-form'>
       <span style={{fontSize:"2rem",color: 'rgba(0, 0, 0, 0.45)'}} >$ &nbsp;</span> 
-        <InputNumber  name='amount'type="number" min={0} value={amount} onChange={(value) => setAmount(value)} size='large'/>
+        <InputNumber  name='amount'type="number" min={0} value={amount} onChange={handleInputChange} size='large'/>
+        {alert}
        
         <br />
         <br />

@@ -437,3 +437,7 @@ p{
   text-align: center;
 }
 
+.ant-alert {
+  width: 17rem !important;
+  margin:auto !important
+}
