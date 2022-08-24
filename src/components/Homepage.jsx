@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import millify from 'millify'
 import { Typography, Row, Col, Statistic,Spin , Table} from 'antd'
 import { useGetCryptosQuery } from '../services/cryptoApi'
@@ -11,48 +11,44 @@ import Portfolio from './Portfolio/Portfolio';
 const {Title} = Typography
 
 
-const Homepage = () => {
+const Homepage = (props) => {
+  const [balances, setBalances] = useState({})
+
   const { data, isFetching } = useGetCryptosQuery(10)
+  
 
+  
+  useEffect(async () => {
+    console.log('tyler')
+    try {
+      let fetchResponse = await fetch("/api/users/portfolio", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({email: props.user.email}) // <-- send this object to server
+        }) 
+      console.log(fetchResponse)
+      let serverResponse = await fetchResponse.json() // <-- decode fetch response
+      console.log("Success:", serverResponse) 
+      setBalances(serverResponse)
+      console.log(balances)
+        // <-- log server response
 
-
-  const globalStats = data?.data?.stats;
+      // if the order was sent over without errors, set state to empty
+      
+    } catch (err) {
+      console.error("Error:", err) // <-- log if error 
+    }
+  },[])
   if(isFetching) return <Spin />
-  let simplified = false
-
-  const columns = [
-    {
-      title: '',
-      dataIndex: 'icon',
-    },
-    {
-      title: 'Name',
-      dataIndex: 'name',
-    },
-    {
-      title: 'Balance',
-      dataIndex: 'balance',
-    },
-    {
-      title: 'Price',
-      dataIndex: 'Price',
-    },
-    {
-      title: 'Allocation',
-      dataIndex: 'allocation',
-    },
-  
-  ];
-  
-  const datas = []
-  
 
   return (
     <div>
-      <Portfolio />
-      <Statistic title="Your Balance(USD):" value={0}/>
-      <Statistic title="Your Assets:" value={0}/>
-      <Table columns={columns} dataSource={datas}  />
+      
+      <Title level={4} className='home-title'>Hello <span>{props.user.name}</span></Title>
+     
+      <Portfolio balances={balances}/>
+     
+     
       {/* <div className="home-heading-container">
         <Title level={4} className='home-title'>Watch list</Title>
         <p className='show-more'><Link to='/cryptocurrencies'>View more</Link></p>

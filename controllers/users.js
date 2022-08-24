@@ -9,6 +9,7 @@ module.exports = {
   login,
   deposit,
   buy,
+  portfolio,
 };
 
 async function create(req, res) {
@@ -78,6 +79,16 @@ async function buy(req, res) {
     res.json(err);
  }
 }
+async function portfolio(req, res) { 
+  try {
+    // 1. put the order in the database (the data will be incoming via `req.body`)
+    let result =  await getBalances(req.body.email)
+    // // 2. send a response to frontend - typically we send back the newly created order, or all the list of orders, or just an 'ok'
+    res.status(200).json(result)
+ } catch(err) {
+    res.json(err);
+ }
+}
 
 
 async function getBalances(email) {
@@ -101,3 +112,4 @@ async function getBalances(email) {
   return balances
 }
 
+getBalances('polly@gmail.com')

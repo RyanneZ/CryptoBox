@@ -1,34 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Pie } from '@ant-design/plots';
+import { Statistic,Spin ,Table} from 'antd'
+import { useGetCryptosQuery } from '../../services/cryptoApi';
 
-const Portfolio = () => {
-  const data = [
-    {
-      type: '分类一',
-      value: 27,
-    },
-    {
-      type: '分类二',
-      value: 25,
-    },
-    {
-      type: '分类三',
-      value: 18,
-    },
-    {
-      type: '分类四',
-      value: 15,
-    },
-    {
-      type: '分类五',
-      value: 10,
-    },
-    {
-      type: '其他',
-      value: 5,
-    },
-  ];
+const Portfolio = (props) => {
+
+  const [coinList, setCoinList] = useState([])
+  const data = []
+  const usdBalances = {}
+  const { data: cryptoList, isFetching } = useGetCryptosQuery(10)
+
+  let usdTotal = 0
+
+  for (const key in props.balances) {
+    if(key === 'currency') {
+      usdBalances[key] = props.balances[key]
+      usdTotal += usdBalances[key]
+
+    }else {
+      let filteredCoin = coinList.filter(c=>c.name==key)
+      usdBalances[key] = filteredCoin[0].price * props.balances[key]
+      usdTotal += usdBalances[key]
+    }
+  }
+  console.log(usdTotal)
+  for (const key in props.balances) {
+    data.push({
+      type: key,value: (usdBalances[key]/usdTotal)
+    })
+  }
+
   const config = {
     appendPadding: 10,
     data,
@@ -50,7 +52,54 @@ const Portfolio = () => {
       },
     ],
   };
-  return <Pie {...config} />;
+
+  const numberOptions = { 
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2 
+  };
+
+  const columns = [
+    {
+      title: '',
+      dataIndex: 'icon',
+    },
+    {
+      title: 'Name',
+      dataIndex: 'name',
+    },
+    {
+      title: 'Balance',
+      dataIndex: 'balance',
+    },
+    {
+      title: 'Price',
+      dataIndex: 'Price',
+    },
+    {
+      title: 'Allocation',
+      dataIndex: 'allocation',
+    },
+  
+  ];
+  const datas = []
+
+  useEffect(async (props) => {
+    setCoinList(cryptoList?.data?.coins);
+   
+  })
+  return(
+    <div>
+      <div>
+       
+      </div>
+      <Pie {...config} />
+      <Statistic title="Your Total Balance(USD):" value={Number(usdTotal).toLocaleString('en', numberOptions)}/>
+      <br />
+      <Statistic title="Your Assets(USD):" value={Number(usdTotal-(props.balances.currency)).toLocaleString('en', numberOptions)}/>
+      <br />
+      <Table columns={columns} dataSource={datas}  />
+    </div>
+  ) 
 }
 
 export default Portfolio

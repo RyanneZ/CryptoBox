@@ -94,10 +94,9 @@ class App extends Component {
            <div className="routes">
               
               <Routes>
-                <Route path='/' element={<Homepage />} />
-                <Route path='/Deposit' element={<Deposit user={this.state.user}/>} />
+                <Route path='/' element={<Homepage user={this.state.user}/>} />
+                <Route path='/deposit' element={<Deposit user={this.state.user}/>} />
                 <Route path='/cryptocurrencies' element={<Cryptocurrencies />} />
-                <Route path='/crypto/:coinId' element={<CryptoDetails />} />
                 <Route path='/trade' element={<Trade handleChange={this.handleChange} user={this.state.user}/>} />
                 <Route path='/news' element={<News />} />
               </Routes>

@@ -28,7 +28,7 @@ const Trade = (props) => {
 
 
   const { data: cryptoList, isFetching } = useGetCryptosQuery(10)
-  console.log('cryptoList1:',cryptoList)
+ 
 
 
   useEffect(async () => {
@@ -113,7 +113,7 @@ const Trade = (props) => {
   }
 
   return (
-      
+
     <Tabs defaultActiveKey="1" centered>
     <TabPane tab="Buy" key="1" className='tabpane'>
     

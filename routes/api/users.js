@@ -8,5 +8,6 @@ router.post('/signup', usersCtrl.create);
 router.post('/login', usersCtrl.login);
 router.post('/deposit', usersCtrl.deposit)
 router.post('/buy', usersCtrl.buy)
+router.post('/portfolio', usersCtrl.portfolio)
 
 module.exports = router;
