@@ -22,8 +22,10 @@ const Portfolio = (props) => {
   
       }else {
         let filteredCoin = coinList.filter(c=>c.name==key)
+        if (filteredCoin.length > 0){
         usdBalances[key] = filteredCoin[0].price * props.balances[key]
         usdTotal += usdBalances[key]
+        }
       }
     }
 
@@ -31,7 +33,7 @@ const Portfolio = (props) => {
  
   for (const key in usdBalances) {
     data.push({
-      type: key,value: usdBalances[key] 
+      type: key,value: Math.round(usdBalances[key]*100,0)/100 
     })
   }
 
@@ -89,6 +91,7 @@ const Portfolio = (props) => {
   for (const key in props.balances) {
     if(key != 'currency' && props.balances[key] != 0) {
       let filteredCoin = coinList.filter(c=>c.name==key)
+      if (filteredCoin.length > 0){
       datas.push({
         key: filteredCoin[0].uuid,
         icon: <><img src={filteredCoin[0].iconUrl} style={{width:"2rem",height:"2rem"}} /></>,
@@ -97,7 +100,7 @@ const Portfolio = (props) => {
         price: Number(filteredCoin[0].price).toLocaleString('en', numberOptions),
         allocation: Number((usdBalances[key]/usdTotal * 100)).toLocaleString('en', numberOptions),
   
-      })
+      })}
     }
  
   }

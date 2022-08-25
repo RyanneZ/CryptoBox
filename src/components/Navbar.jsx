@@ -23,10 +23,10 @@ const Navbar = (props) => {
           <Link to='/cryptocurrencies'>Cryptocurrencies</Link>
         </Menu.Item>
         <Menu.Item icon={<MoneyCollectOutlined />}>
-          <Link to='/Deposit'>Deposit</Link>
+          <Link id = "depositbutton" to='/Deposit'>Deposit</Link>
         </Menu.Item>
         <Menu.Item icon={<DollarCircleOutlined />}>
-          <Link to='/trade'>Trade</Link>
+          <Link id = "tradebutton" to='/trade'>Trade</Link>
         </Menu.Item>
         <Menu.Item icon={<BulbOutlined />}>
           <Link to='/news'>News</Link>

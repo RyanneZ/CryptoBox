@@ -27,12 +27,13 @@ const Trade = (props) => {
   const [alert, setAlert] = useState('')
 
 
+
   const { data: cryptoList, isFetching } = useGetCryptosQuery(10)
  
 
 
   useEffect(async () => {
-    setCoinList(cryptoList?.data?.coins);
+    await setCoinList(cryptoList?.data?.coins);
     try {
       let fetchResponse = await fetch("/api/users/buy", {
         method: "POST",
@@ -43,7 +44,9 @@ const Trade = (props) => {
       console.log("Success:", serverResponse) 
       setAmount(0)
       setBalances(serverResponse)
+      console.log(coinList)
       console.log(balances)
+
         // <-- log server response
 
       // if the order was sent over without errors, set state to empty
@@ -54,7 +57,6 @@ const Trade = (props) => {
 
 
   },[])
-  if(isFetching) return <Spin />
 
   const handleChange = (value) => {
     setSelectedCoin(value)
@@ -70,12 +72,6 @@ const Trade = (props) => {
 
   //Default Value for Price
   if (price === 0) if(coinList !== undefined) if (coinList.length > 0) handleChange(selectedCoin)
-
-  //No Coin Data Yet
-  if (coinList === undefined){
-    return <Spin />
-  }
-  console.log(coinList)
 
 
   const handleBuy = async (e) => {
@@ -120,6 +116,11 @@ const Trade = (props) => {
       console.error("Error:", err) // <-- log if error 
     }
 
+  }
+
+  //No Coin Data Yet
+  if (coinList === undefined || coinList.length === 0 ){
+    return  <Spin />
   }
 
   return (
