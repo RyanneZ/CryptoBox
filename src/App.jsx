@@ -4,15 +4,8 @@ import { Layout, Typography, Space} from 'antd';
 import './App.css';
 import {Navbar, Homepage, Deposit, Cryptocurrencies, CryptoDetails, News,Trade} from './components';
 import AuthPage from './pages/AuthPage/AuthPage';
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import { Menu } from 'antd';
-import  { useState } from 'react';
+
+
 
 const { Header, Sider, Content } = Layout;
 
