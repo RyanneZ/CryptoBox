@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import React from 'react';
 
@@ -67,7 +67,7 @@ export default class SignUpForm extends Component {
               },
             ]}
           >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" type="text" name="email" value={this.state.email} onChange={this.handleChange} required/>
+        <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" type="text" name="email" value={this.state.email} onChange={this.handleChange} required/>
         </Form.Item>
         <Form.Item
           name="password"

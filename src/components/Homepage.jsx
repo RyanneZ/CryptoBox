@@ -21,7 +21,7 @@ const Homepage = (props) => {
 
   
   useEffect(async () => {
-    console.log('tyler')
+    
     try {
       let fetchResponse = await fetch("/api/users/portfolio", {
         method: "POST",

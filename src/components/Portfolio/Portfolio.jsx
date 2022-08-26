@@ -107,14 +107,20 @@ const Portfolio = (props) => {
     setCoinList(cryptoList?.data?.coins);
    
   })
+  console.log(usdTotal)
+  let pieChart = ''
+  if (1 * usdTotal  > 0) {
+    pieChart = ( <div className='pie-chart'>
+      <Pie {...config} />
+      <br /><br />
+    </div>
+    )
+  }
+
   return(
     <div>
       <div className='portfolio'>
-        <div className='pie-chart'>
-          <Pie {...config} />
-        </div>
-        
-        <br /><br />
+        {pieChart}
         <Statistic title="Your Total Balance(USD):" value={Number(usdTotal).toLocaleString('en', numberOptions)}/>
         <br />
         <Statistic title="Your Crypto Assets(USD):" value={Number(usdTotal-(props.balances.currency)).toLocaleString('en', numberOptions)}/>
