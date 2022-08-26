@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import millify from 'millify';
 import { Pie } from '@ant-design/plots';
 import { Statistic,Spin ,Table} from 'antd'
 import { useGetCryptosQuery } from '../../services/cryptoApi';
@@ -111,15 +109,18 @@ const Portfolio = (props) => {
   })
   return(
     <div>
-      <div>
-       
+      <div className='portfolio'>
+        <div className='pie-chart'>
+          <Pie {...config} />
+        </div>
+        
+        <br /><br />
+        <Statistic title="Your Total Balance(USD):" value={Number(usdTotal).toLocaleString('en', numberOptions)}/>
+        <br />
+        <Statistic title="Your Crypto Assets(USD):" value={Number(usdTotal-(props.balances.currency)).toLocaleString('en', numberOptions)}/>
+        <br />
       </div>
-      <Pie {...config} />
-      <br /><br />
-      <Statistic title="Your Total Balance(USD):" value={Number(usdTotal).toLocaleString('en', numberOptions)}/>
-      <br />
-      <Statistic title="Your Crypto Assets(USD):" value={Number(usdTotal-(props.balances.currency)).toLocaleString('en', numberOptions)}/>
-      <br />
+
       <Table columns={columns} dataSource={datas}  />
     </div>
   ) 

@@ -102,9 +102,6 @@ class App extends Component {
            
           </Layout>
         </div>
-
-      
-        
       </div>
       
       : <AuthPage setUserInState={this.setUserInState}/>}

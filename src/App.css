@@ -441,3 +441,28 @@ p{
   width: 17rem !important;
   margin:auto !important
 }
+
+.home-title {
+  font-size: 1.3rem !important;
+}
+
+.pie-chart {
+  padding-left: 6rem;
+}
+
+.portfolio {
+  padding: 0 5rem;
+}
+
+.welcome {
+  text-align: right;
+}
+
+.username {
+  display: flex;
+  justify-content: end;
+}
+
+.wallet {
+  padding: 0.5rem;
+}

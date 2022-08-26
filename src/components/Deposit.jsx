@@ -101,10 +101,10 @@ class Deposit extends Component {
               <InputNumber  name='amount'type="number" min={0} value={this.state.amount} onChange={this.handleChange} size='large'/>
               <br />
               <br />
-              <br />
-              Add to &nbsp;<img src='https://cdn.coinranking.com/kz6a7w6vF/usd.svg' style={{width: '1rem', height: '1rem'}} />&nbsp; &nbsp;USD wallet
-              <br />
-            
+              <div className='wallet'>
+                Add to &nbsp;<img src='https://cdn.coinranking.com/kz6a7w6vF/usd.svg' style={{width: '1rem', height: '1rem'}} />&nbsp; &nbsp;USD wallet
+                <br />
+              </div>
               <button className='ant-btn ant-btn-primary' type='submit' onClick={this.handleDeposit}>Confirm</button>
             </form>
             <br />
@@ -119,9 +119,10 @@ class Deposit extends Component {
               {this.state.alert}
                 <br />
                 <br />
-                <br />
-                With &nbsp;<img src='https://cdn.coinranking.com/kz6a7w6vF/usd.svg' style={{width: '1rem', height: '1rem'}} />&nbsp; &nbsp;USD wallet
-                <br /> 
+                <div className='wallet'>
+                  With &nbsp;<img src='https://cdn.coinranking.com/kz6a7w6vF/usd.svg' style={{width: '1rem', height: '1rem'}} />&nbsp; &nbsp;USD wallet
+                  <br />
+                </div>
             
               <button className='ant-btn ant-btn-primary' type='submit' onClick={this.handleWithdrawl}>Confirm</button>
             </form>

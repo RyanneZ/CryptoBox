@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import millify from 'millify'
-import { Typography, Row, Col, Statistic,Spin , Table} from 'antd'
+import { Typography,Spin,Avatar } from 'antd'
 import { useGetCryptosQuery } from '../services/cryptoApi'
 import { Link } from 'react-router-dom';
-import getPlacements from 'antd/es/_util/placements'
-import {Cryptocurrencies, News} from '../components';
-import { Pie } from '@antv/g2plot';
+
+import { News} from '../components';
+
 import Portfolio from './Portfolio/Portfolio';
+import { UserOutlined } from '@ant-design/icons';
 
 const {Title} = Typography
 
@@ -44,8 +45,15 @@ const Homepage = (props) => {
   if(isFetching) return <Spin />
   return (
     <div>
-      
-      <Title level={4} className='home-title'>Hello <span>{props.user.name}</span></Title>
+      <div className='welcome'>
+        <div className='username'>
+          <Avatar  size="medium" icon={<UserOutlined />} />&nbsp;&nbsp;&nbsp;
+          <span  className='home-title'> {props.user.name}&nbsp;&nbsp;</span>
+          <br />
+        </div>
+        <p style={{color: 'rgba(0, 0, 0, 0.45'}}>{props.user.email}</p>
+      </div>
+
      
       <Portfolio balances={balances}/>
      

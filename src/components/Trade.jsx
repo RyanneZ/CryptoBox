@@ -146,11 +146,17 @@ const Trade = (props) => {
         
         </Select>
         <br />
+        
+        <div className='wallet'>
+          Price:<span style={{color:'#1890ff'}}>{`  ${Number(price).toLocaleString('en', numberOptions)}`}</span>
+          <br/><br/>
+        </div>
+        <div className='wallet'>
+          With &nbsp;<img src='https://cdn.coinranking.com/kz6a7w6vF/usd.svg' style={{width: '1rem', height: '1rem'}} />&nbsp; &nbsp;USD wallet
+          <br />
+        </div>
+        
       
-        Price:<span style={{color:'#1890ff'}}>{`  ${Number(price).toLocaleString('en', numberOptions)}`}</span>
-        <br/><br/>
-        With &nbsp;<img src='https://cdn.coinranking.com/kz6a7w6vF/usd.svg' style={{width: '1rem', height: '1rem'}} />&nbsp; &nbsp;USD wallet
-        <br />
         <button className='ant-btn ant-btn-primary' type='submit' onClick={handleBuy}>Confirm</button>
       </form>
       <br /><br />
@@ -190,11 +196,16 @@ const Trade = (props) => {
         
         </Select>
         <br />
-        Price:<span style={{color:'#1890ff'}}>{`  ${Number(price).toLocaleString('en', numberOptions)}`}</span>
-     
-        <br/><br/>
-        Add to &nbsp;<img src='https://cdn.coinranking.com/kz6a7w6vF/usd.svg' style={{width: '1rem', height: '1rem'}} />&nbsp; &nbsp;USD wallet
-        <br />
+        <div className='wallet'>
+          Price:<span style={{color:'#1890ff'}}>{`  ${Number(price).toLocaleString('en', numberOptions)}`}</span>
+          <br/><br/>
+        </div>
+          
+        <div className='wallet'>
+          Add to &nbsp;<img src='https://cdn.coinranking.com/kz6a7w6vF/usd.svg' style={{width: '1rem', height: '1rem'}} />&nbsp; &nbsp;USD wallet
+          <br />
+        </div>
+      
         <button className='ant-btn ant-btn-primary' type='submit' onClick={handleSell}>Confirm</button>
       </form>
     
