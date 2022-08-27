@@ -23,9 +23,10 @@ CryptoBox is powered by Node.js, Express.js and MongoDB
 ## Home Page 
 <img width="1437" alt="image" src="https://user-images.githubusercontent.com/91228440/187010678-4ca7a01f-4041-420a-90f6-037328ed306a.png">
 <hr>
-<img width="1435" alt="image" src="https://user-images.githubusercontent.com/91228440/187010723-4b12d33a-1917-4615-b60d-320986c94918.png">
+<img width="1428" alt="image" src="https://user-images.githubusercontent.com/91228440/187012714-0bfe7bb2-8f6a-4bd2-a674-2aa14a985c90.png">
 <hr>
-<img width="1432" alt="image" src="https://user-images.githubusercontent.com/91228440/187010748-2bf64257-ddbc-4c3c-9caa-5cb387b05384.png">
+<img width="1436" alt="image" src="https://user-images.githubusercontent.com/91228440/187012723-e63c7c61-7f98-418e-b430-578329e37a41.png">
+
 
 
 ## Cryptocurrency Page
