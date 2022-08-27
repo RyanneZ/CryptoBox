@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Routes ,Route } from 'react-router-dom';
-import { Layout, Typography, Space} from 'antd';
+import { Layout, Typography, Space, } from 'antd';
+import {Link} from 'react-router-dom'
 import './App.css';
 import {Navbar, Homepage, Deposit, Cryptocurrencies, CryptoDetails, News,Trade} from './components';
 import AuthPage from './pages/AuthPage/AuthPage';
@@ -69,8 +70,9 @@ class App extends Component {
   render() {
     return (
       <>
-         {this.state.user ?  
-     
+        <Layout>
+        {this.state.user ?  
+      
       <div className='App'>
         <div className="navbar">
           <Navbar logout={this.logout}/>
@@ -84,7 +86,7 @@ class App extends Component {
             minHeight: 280,
           }}
         >
-           <div className="routes">
+            <div className="routes">
               
               <Routes>
                 <Route path='/' element={<Homepage user={this.state.user}/>} />
@@ -96,15 +98,12 @@ class App extends Component {
               
             </div>
         </Content>      
-        <div className="main">
-          <Layout>
-         
-           
-          </Layout>
-        </div>
+  
       </div>
       
       : <AuthPage setUserInState={this.setUserInState}/>}
+      </Layout>
+       
       </>
     )
   }
