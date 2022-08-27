@@ -45,6 +45,7 @@ CryptoBox is powered by Node.js, Express.js and MongoDB
 ## Technologies Used:
 - React
 - Redux
+- Rapid API
 - Node.js
 - Express.js
 - MongoDB
@@ -52,6 +53,10 @@ CryptoBox is powered by Node.js, Express.js and MongoDB
 - JavaScript
 - CSS
 
+## Future Improvement:
+CryptoBox is a cryptocurrency simulation platform. In the future, I will connect this application with a real cryptocurrency wallet (e.g.: Coinbase wallet) to enable real life trading.
+
+Create a history performance portfolio and line charts to show transaction history.
 
 ## Getting Started: 
 - Heroku: https://cryptobox123.herokuapp.com/
