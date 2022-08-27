@@ -42,6 +42,21 @@ CryptoBox is powered by Node.js, Express.js and MongoDB
 ## News Page
 <img width="1433" alt="image" src="https://user-images.githubusercontent.com/91228440/187011140-3e2b0570-145b-4153-8c1e-1d050bcab156.png">
 
+## Technologies Used:
+- React
+- Redux
+- Node.js
+- Express.js
+- MongoDB
+- RESTful APIs
+- JavaScript
+- CSS
+
+
+## Getting Started: 
+- Heroku: https://cryptobox123.herokuapp.com/
+
+
 
 
 
