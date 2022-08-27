@@ -20,7 +20,9 @@ CryptoBox is powered by Node.js, Express.js and MongoDB
 </table>
 
 
-##
+## Homepage
+<img width="1437" alt="image" src="https://user-images.githubusercontent.com/91228440/187010678-4ca7a01f-4041-420a-90f6-037328ed306a.png">
+
 
 
 
