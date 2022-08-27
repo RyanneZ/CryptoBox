@@ -6,7 +6,7 @@
 CryptoBox is a crypto currency exchange platform. It is a Full-stack web application. Users can use CryptoBox to check prices, daily changes, market cap of different cryptocurrencies. Users can also deposit or withdraw money into wallet and buy or sell crypto assets with or into USD dollars.
 
 ## Front End:
-CryptoBox is built by React, Readux Toolkits and Rapid API 
+CryptoBox is built by React, Redux Toolkits and Rapid API 
 
 ## Back End:
 CryptoBox is powered by Node.js, Express.js and MongoDB
